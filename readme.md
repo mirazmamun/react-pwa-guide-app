@@ -1,6 +1,10 @@
 # react-pwa-guide-kit
 
-> This is a guide kit is designed to show how to make a Progressive Web App(PWA) and PWA features in React.js development environments. Customized and opinionated tools and build process are optimized to achive high-performed web application which is audited by strict auditor, [Lighthsuse](https://github.com/GoogleChrome/lighthouse). Moreover, this guide kit is also backed by Firebase for hosting, realtime database, and also push notification. Please show how it is [working on firebase hosting](https://react-pwa-hello-world.firebaseapp.com/#/)
+> This is a guide kit is designed to show how to make a Progressive Web App(PWA) and PWA features in React.js development environments. Customized and opinionated tools and build process are optimized to achive high-performed web application which is audited by strict auditor, [Lighthouse](https://github.com/GoogleChrome/lighthouse). Moreover, this guide kit is also backed by Firebase for hosting, realtime database, and also push notification.
+
+# Demo
+
+[Demo](https://react-pwa-hello-world.firebaseapp.com/#/) is working on firebase hosting. Please take a look.
 
 # Features
 
