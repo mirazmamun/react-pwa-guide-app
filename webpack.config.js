@@ -4,6 +4,7 @@ const {resolve, join} = require('path');
 const {LoaderOptionsPlugin, DefinePlugin, optimize} = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ChunkManifestPlugin = require('chunk-manifest-webpack-plugin');
 const isWebpack = require('is-webpack');
 const SWPrecacheWebpackPlugin = isWebpack ? require('sw-precache-webpack-plugin') : require('sw-precache-webpack-dev-plugin');
 const PreloadWebpackPlugin = require('preload-webpack-plugin');
@@ -64,12 +65,11 @@ module.exports = ({production = false, ssr = false} = {}) => {
         output: output.filename,
         minChunks: m => m.resource && m.resource.includes('node_modules')
       }),
-      new optimize.CommonsChunkPlugin({
-        name: 'manifest',
-        filename: '[name].js',
-        minChunks: Infinity
-      }),
       new DefinePlugin(defined),
+      new ChunkManifestPlugin({
+        filename: "chunk-manifest.json",
+        manifestVariable: "webpackManifest"
+      }),
       new HtmlWebpackPlugin(Object.assign({
         filename: `index.${ssr ? 'ejs' : 'html'}`,
         template: './src/views/index.ejs',
@@ -81,6 +81,17 @@ module.exports = ({production = false, ssr = false} = {}) => {
       new PreloadWebpackPlugin({
         fileBlacklist: [/\.map./]
       }),
+      {
+        // html-webpack-inline-webpack-manifest, @todo remove the json from asset
+        apply: (compiler) => {
+          compiler.plugin("compilation", (compilation) => {
+            compilation.plugin('html-webpack-plugin-before-html-generation', (htmlPluginData, callback) => {
+              htmlPluginData.plugin.options.manifestVariable = `window.webpackManifest=${compilation.assets['chunk-manifest.json']._value}`;
+              callback(null, htmlPluginData);
+            });
+          });
+        }
+      },
       new CopyWebpackPlugin([{
         context: './public',
         from: '*.*'
@@ -114,7 +125,7 @@ module.exports = ({production = false, ssr = false} = {}) => {
 
   if (production) {
     webpackConfig.plugins = webpackConfig.plugins.concat([
-       new LoaderOptionsPlugin({
+      new LoaderOptionsPlugin({
         minimize: true,
         debug: false
       }),
