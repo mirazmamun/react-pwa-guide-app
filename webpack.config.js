@@ -4,7 +4,7 @@ const {resolve, join} = require('path');
 const {LoaderOptionsPlugin, DefinePlugin, optimize} = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ChunkManifestPlugin = require('chunk-manifest-webpack-plugin');
+const ChunkManifestWebpackPlugin = require('chunk-manifest-webpack-plugin');
 const isWebpack = require('is-webpack');
 const SWPrecacheWebpackPlugin = isWebpack ? require('sw-precache-webpack-plugin') : require('sw-precache-webpack-dev-plugin');
 const PreloadWebpackPlugin = require('preload-webpack-plugin');
@@ -66,7 +66,7 @@ module.exports = ({production = false, ssr = false} = {}) => {
         minChunks: m => m.resource && m.resource.includes('node_modules')
       }),
       new DefinePlugin(defined),
-      new ChunkManifestPlugin({
+      new ChunkManifestWebpackPlugin({
         filename: "chunk-manifest.json",
         manifestVariable: "webpackManifest"
       }),
