@@ -38,7 +38,7 @@ app.get('/', (req, res) => {
     }
 
     const markup = renderToString(createElement(RouterContext, props, null));
-    res.render('index', {markup: markup});  
+    res.render('index', {markup: markup});
   });
 });
 

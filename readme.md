@@ -18,7 +18,7 @@
 - **Service Worker**: Generating service worker scripts is completly intergrated in build process with Webpack 2 and plugins
 - **Web Manifest**: Have a look how to installable webapp work by Web Manifest
 - **Realtime Database**: We featured firebase to show PWA how to work with fetched data and cached data via service worker
-- **Server Side Rendering**: Presenting intial page in short time is an important issue. This guide kit includes 
+- **Server Side Rendering**: Presenting intial page in short time is an important issue. This guide kit includes
 simple server side code for demonstration. Buidling PWA for Server Side Rendering version landed You can take a look what is different between both of versions
 
 # Getting Started

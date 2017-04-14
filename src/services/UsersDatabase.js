@@ -39,6 +39,6 @@ export default function (opts) {
 	if (!usersDatabaseSingleton) {
 		usersDatabaseSingleton = new UsersDatabase(opts);
 	}
-	
+
 	return usersDatabaseSingleton;
 }

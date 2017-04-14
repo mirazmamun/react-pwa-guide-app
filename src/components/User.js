@@ -24,18 +24,18 @@ class User extends Component {
 			get.then(() => {
 				this.setState({user: usersDatabase().data(this.state.id)})
 			});
-		}		
+		}
 	}
 
 	shouldComponentUpdate(nextProps, nextState) {
-		if (this.state.id !== (nextProps.params && nextProps.params.id) || 
+		if (this.state.id !== (nextProps.params && nextProps.params.id) ||
 				this.state.user !== nextState.user) {
 			return true;
 		}
 
 		return false;
 	}
-	
+
 	render() {
 		return (
 			<Card style={style}>

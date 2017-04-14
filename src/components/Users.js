@@ -21,7 +21,7 @@ class Users extends Component {
 			dialog: false
 		};
 	}
-	
+
 	static database() {
 		 return usersDatabase({
 			 databaseURL: FIREBASE_CONFIG.databaseURL
@@ -70,7 +70,7 @@ class Users extends Component {
 			if (!this.state.users) {
 				return;
 			}
-			
+
 			return Object.keys(this.state.users).map(id => {
 				return (
 					<Link key={id} to={`/users/${id}`}>

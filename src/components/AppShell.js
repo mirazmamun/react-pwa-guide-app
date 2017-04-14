@@ -37,19 +37,19 @@ class AppShell extends Component {
             width={200}
             open={this.state.open}
             onRequestChange={this.handleRequestChange}>
-              <MenuItem 
+              <MenuItem
                 primaryText={'Greeting'}
                 leftIcon={<Icons.Greeting/>}
                 containerElement={<Link to={'/'}/>}
                 onTouchTap={this.handleToggleDrawer}
               />
-              <MenuItem 
+              <MenuItem
                 primaryText={'Users'}
                 leftIcon={<Icons.Users/>}
                 containerElement={<Link to={'/users'}/>}
                 onTouchTap={this.handleToggleDrawer}
               />
-              <MenuItem 
+              <MenuItem
                 primaryText={'Notification'}
                 leftIcon={<Icons.Notification/>}
                 containerElement={<Link to={'/notification'}/>}
