@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router';
+import {Route, Link} from 'react-router-dom';
 import {Avatar, Dialog, FlatButton, TextField, FloatingActionButton} from 'material-ui';
 import {Card, CardHeader, CardText} from 'material-ui/Card';
 import User from './User'
@@ -30,12 +30,12 @@ class Users extends Component {
 		Users.database().get()
 			.then(users => this.setState({users}))
 			.catch(err => {
-			console.log(err);
-		});
+			  console.log(err);
+		  });
 	}
 
 	shouldComponentUpdate(nextProps, nextState) {
-		return this.state !== nextState || nextProps.params.id !== this.props.params.id;
+    return !nextProps.match.params.id || nextProps.match.params.id !== this.props.match.params.id;
 	}
 
 	handleOpenDialog = () => this.setState({dialog: true})
@@ -69,6 +69,12 @@ class Users extends Component {
 				return;
 			}
 
+      if (this.props.match.params.id) {
+        return (
+          <User user={this.state.users[this.props.match.params.id]}/>
+				);
+      }
+
 			return Object.keys(this.state.users).map(id => {
 				return (
 					<Link key={id} to={`/users/${id}`}>
@@ -77,7 +83,6 @@ class Users extends Component {
 				);
 			});
 		};
-
 		return (
 			<div>
 				{users()}

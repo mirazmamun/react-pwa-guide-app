@@ -1,8 +1,11 @@
 import React, {Component} from 'react';
-import {hashHistory, Link} from 'react-router';
+import {Route, Link} from 'react-router-dom';
 import {MuiThemeProvider, getMuiTheme} from 'material-ui/styles';
 import {Drawer, AppBar, MenuItem} from 'material-ui';
 import * as Icons from './Icons';
+import Greeting from './Greeting';
+import Users from './Users';
+import Notification from './Notification';
 
 const style = {
   width: '90%',
@@ -57,7 +60,10 @@ class AppShell extends Component {
               />
           </Drawer>
           <div id="content" style={style}>
-            {React.cloneElement(this.props.children, {msg: 'Hello world'})}
+            <Route exact path="/" component={Greeting}/>
+            <Route exact path="/users" component={Users}/>
+            <Route exact path="/users/:id" component={Users}/>
+            <Route exact path="/notification" component={Notification}/>
           </div>
         </div>
       </MuiThemeProvider>
