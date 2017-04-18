@@ -57,7 +57,6 @@ class AppShell extends Component {
               />
           </Drawer>
           <div id="content" style={style}>
-            {/*{this.props.children}*/}
             {React.cloneElement(this.props.children, {msg: 'Hello world'})}
           </div>
         </div>
