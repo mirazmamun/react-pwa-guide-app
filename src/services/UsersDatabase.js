@@ -7,7 +7,7 @@ class UsersDatabase {
 	data = (id) => id ? this.users[id] : this.users;
 
 	get = () => {
-		return fetch(`${this.databaseURL}?orderBy="name"`).then(res => {
+		return fetch(`${this.databaseURL}/users.json/?orderBy="name"`).then(res => {
 			if (res.status !== 200) {
 				throw new Error(res.statusText);
 			}
