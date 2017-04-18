@@ -23,9 +23,7 @@ class Users extends Component {
 	}
 
 	static database() {
-		 return usersDatabase({
-			 databaseURL: FIREBASE_CONFIG.databaseURL
-		 });
+		 return usersDatabase(firebaseConfig);
 	}
 
 	componentWillMount() {

@@ -7,7 +7,7 @@ class Notification extends Component {
   constructor(props) {
     super(props);
 
-    this.message = new FirebaseMessaging(Object.assign(FIREBASE_CONFIG, {
+    this.message = new FirebaseMessaging(Object.assign(firebaseConfig, {
       handleMessage: this.handleMessage.bind(this)
     }));
 
