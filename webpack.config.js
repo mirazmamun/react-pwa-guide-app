@@ -79,7 +79,7 @@ module.exports = ({production = false, ssr = false} = {}) => {
         dropAsset: true
       }),
       new PreloadWebpackPlugin({
-        fileBlacklist: [/\.map./]
+        include: ['greeting']
       }),
       new CopyWebpackPlugin([{
         context: './public',
