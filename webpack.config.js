@@ -5,8 +5,7 @@ const {LoaderOptionsPlugin, DefinePlugin, optimize} = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const InlineChunkManifestHtmlWebpackPlugin = require('inline-chunk-manifest-html-webpack-plugin');
-const isWebpack = require('is-webpack');
-const SWPrecacheWebpackPlugin = isWebpack ? require('sw-precache-webpack-plugin') : require('sw-precache-webpack-dev-plugin');
+const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin-loader');
 const PreloadWebpackPlugin = require('preload-webpack-plugin');
 const dotenvSafe = require('dotenv-safe').load();
 const pkg = require('./package.json');
@@ -90,7 +89,6 @@ module.exports = ({production = false, ssr = false} = {}) => {
       }]),
       new SWPrecacheWebpackPlugin({
         cacheId: `${pkg.name}-${pkg.version}`,
-        stripPrefix: './build',
         staticFileGlobs: [
           join(output.path, '**/*')
         ],
