@@ -18,8 +18,8 @@
 - **Service Worker**: Generating service worker scripts is completly intergrated in build process with Webpack 2 and plugins
 - **Web Manifest**: Have a look how to installable webapp work by Web Manifest
 - **Realtime Database**: We featured firebase to show PWA how to work with fetched data and cached data via service worker
-- **Server Side Rendering**: Presenting intial page in short time is an important issue. This guide kit includes
-simple server side code for demonstration. Buidling PWA for Server Side Rendering version landed You can take a look what is different between both of versions
+- **Server Side Rendering**: Deprecated in favour of using code splitting and react-router 4 ~~Presenting intial page in short time is an important issue. This guide kit includes
+simple server side code for demonstration. Buidling PWA for Server Side Rendering version landed You can take a look what is different between both of versions~~
 
 # Getting Started
 
@@ -51,9 +51,6 @@ We support three versions of build, production, development(debug) and ssr. All 
 # build in production
 yarn build
 
-# build in ssr version
-yarn build:ssr
-
 # build in debug
 yarn build:debug
 ```
@@ -63,9 +60,6 @@ yarn build:debug
 ```sh
 # starting app by webpack-dev-server, no-ssr
 yarn start
-
-# starting app by ssr server
-yarn build:ssr && yarn start:ssr
 ```
 
 ## Deployment
