@@ -10,7 +10,7 @@
     "build": "rm -rf build && webpack --env.production",
     "build:debug": "rm -rf build && webpack",
     "deploy": "yarn run build && firebase deploy",
-    "analyze": "webpack --profile --progress --json > ./node_modules/.bundle-data.json && webpack-bundle-analyzer ./node_modules/.bundle-data.json"
+    "analyze": "webpack --env.production --profile --progress --json > ./node_modules/.bundle-data.json && webpack-bundle-analyzer ./node_modules/.bundle-data.json"
   },
   "dependencies": {
     "ejs": "^2.5.6",
