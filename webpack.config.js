@@ -34,7 +34,7 @@ module.exports = ({production = false, ssr = false} = {}) => {
   const webpackConfig = {
     entry: {
       main: ['./src/main.js'],
-      vendor: ['react', 'react-dom', 'react-router', 'material-ui', 'firebase']
+      vendor: ['react', 'react-dom', 'react-router-dom'],
     },
     output,
     module: {
@@ -48,8 +48,7 @@ module.exports = ({production = false, ssr = false} = {}) => {
     plugins: [
       new optimize.CommonsChunkPlugin({
         name: 'vendor',
-        output: output.filename,
-        minChunks: m => m.resource && m.resource.includes('node_modules')
+        output: output.filename
       }),
       new DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
@@ -61,21 +60,24 @@ module.exports = ({production = false, ssr = false} = {}) => {
         favicon: './public/favicon.ico',
         markup: `<div id="app">${ssr ? '<%- markup %>' : ''}</div>`
       }, production ? {
-        removeComments: true,
         collapseWhitespace: true,
-        removeRedundantAttributes: true,
-        useShortDoctype: true,
-        removeEmptyAttributes: true,
-        removeStyleLinkTypeAttributes: true,
         keepClosingSlash: true,
-        minifyJS: true
+        minifyJS: true,
+        minifyCSS: true,
+        removeComments: true,
+        removeEmptyAttributes: true,
+        removeRedundantAttributes: true,
+        removeScriptTypeAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        useShortDoctype: true
       } : {})),
       new InlineChunkManifestHtmlWebpackPlugin({
         filename: "chunk-manifest.json",
+        chunkManifestVariable: 'webpackChunkManifest',
         dropAsset: true
       }),
       new PreloadWebpackPlugin({
-        include: ['greeting']
+        include: ['vendor', 'main', 'greeting']
       }),
       new CopyWebpackPlugin([{
         context: './public',
@@ -115,7 +117,26 @@ module.exports = ({production = false, ssr = false} = {}) => {
         minimize: true,
         debug: false
       }),
-      new optimize.UglifyJsPlugin({sourceMap})
+      // https://webpack.js.org/plugins/uglifyjs-webpack-plugin/
+      new optimize.UglifyJsPlugin({
+        sourceMap,
+        mangle: true,
+        beautify: false,
+        comments: false,
+        // http://lisperator.net/uglifyjs/compress
+        compress: {
+          unused: true,
+          dead_code: true,
+          warnings: false,
+          drop_debugger: true,
+          conditionals: true,
+          evaluate: true,
+          drop_console: true,
+          sequences: true,
+          booleans: true,
+        },
+        extractComments: true
+      })
     ]);
   }
 

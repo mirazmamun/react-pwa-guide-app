@@ -1,7 +1,7 @@
 import React from 'react';
 import {render} from 'react-dom';
 import reactTabEventPlugin from 'react-tap-event-plugin';
-import App from './app.js';
+import App from './components/App';
 
 reactTabEventPlugin();
 
