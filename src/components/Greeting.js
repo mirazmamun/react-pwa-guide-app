@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Card, CardTitle, CardText} from 'material-ui/Card';
 
-class Greeting extends Component {
+class Greeting extends React.Component {
   render () {
     return (
       <div>

@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
-import {TextField, Snackbar} from 'material-ui';
+import React from 'react';
 import {Card, CardText, CardTitle} from 'material-ui/Card';
+import {TextField, Snackbar} from 'material-ui';
 import FirebaseMessaging from '../services/FirebaseMessaging';
 
-class Notification extends Component {
+class Notification extends React.Component {
   constructor(props) {
     super(props);
 

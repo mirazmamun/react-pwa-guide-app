@@ -1,7 +1,6 @@
-import React, {Component} from 'react';
-import {Route, Link} from 'react-router-dom';
+import React from 'react';
+import {Link} from 'react-router-dom';
 import {Avatar, Dialog, FlatButton, TextField, FloatingActionButton} from 'material-ui';
-import {Card, CardHeader, CardText} from 'material-ui/Card';
 import User from './User'
 import usersDatabase from '../services/UsersDatabase';
 import * as Icons from './Icons';
@@ -12,7 +11,7 @@ const fabStyle = {
 	right: '20px'
 };
 
-class Users extends Component {
+class Users extends React.Component {
 	constructor(props) {
 		super(props);
 

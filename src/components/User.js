@@ -1,5 +1,4 @@
-import React, {Component} from 'react';
-import {Link} from 'react-router';
+import React from 'react';
 import {Avatar} from 'material-ui';
 import {Card, CardHeader, CardText} from 'material-ui/Card';
 import usersDatabase from '../services/UsersDatabase';
@@ -9,7 +8,7 @@ const style = {
 	marginBottom: '0.3em'
 };
 
-class User extends Component {
+class User extends React.Component {
 	constructor(props) {
 		super(props);
 
