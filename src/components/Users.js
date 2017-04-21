@@ -25,7 +25,7 @@ class Users extends React.Component {
 		 return usersDatabase(firebaseConfig);
 	}
 
-	componentWillMount() {
+	componentDidMount() {
 		Users.database().get()
 			.then(users => this.setState({users}))
 			.catch(err => {
