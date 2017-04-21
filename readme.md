@@ -20,6 +20,7 @@
 - **Realtime Database**: We featured firebase to show PWA how to work with fetched data and cached data via service worker
 - **Server Side Rendering**: Deprecated in favour of using code splitting and react-router 4 ~~Presenting intial page in short time is an important issue. This guide kit includes
 simple server side code for demonstration. Buidling PWA for Server Side Rendering version landed You can take a look what is different between both of versions~~
+- **React Lite Support**: To achieve minimal vundle size at initializing time of the app, we support for building with react-lite. Simple, you can get another version of app running on `react-lite` if you could add the additional argument on build command when you build `-- --env.lite`
 
 # Getting Started
 

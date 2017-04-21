@@ -30,19 +30,19 @@ class SidebarDrawer extends React.Component {
           primaryText={'Greeting'}
           leftIcon={<GreetingIcon/>}
           containerElement={<Link to={'/'}/>}
-          onTouchTap={this.props.onTouchTap}
+          onClick={this.props.onClick}
         />
         <MenuItem
           primaryText={'Users'}
           leftIcon={<UsersIcon/>}
           containerElement={<Link to={'/users'}/>}
-          onTouchTap={this.props.onTouchTap}
+          onClick={this.props.onClick}
         />
         <MenuItem
           primaryText={'Notification'}
           leftIcon={<NotificationIcon/>}
           containerElement={<Link to={'/notification'}/>}
-          onTouchTap={this.props.onTouchTap}
+          onClick={this.props.onClick}
         />
       </Drawer>
     );
@@ -74,14 +74,8 @@ class AppShell extends Component {
     const LazySidebarDrawer = this.state.drawer && (<SidebarDrawer
       open={this.state.open}
       onMounted={() => this.setState({open: true})}
-      onTouchTap={() => {
-        console.log('onTouchTap');
-        this.setState({open: false})
-      }}
-      onRequestChange={open => {
-        console.log('onRequestChange');
-        this.setState({open: open})
-      }}
+      onClick={() => this.setState({open: false})}
+      onRequestChange={open => this.setState({open: open})}
     />)
 
     return (

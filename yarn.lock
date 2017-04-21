@@ -3173,6 +3173,10 @@ react-event-listener@^0.4.5:
     prop-types "^15.5.4"
     warning "^3.0.0"
 
+react-lite@^0.15.34:
+  version "0.15.34"
+  resolved "https://registry.yarnpkg.com/react-lite/-/react-lite-0.15.34.tgz#650604d700c8209f37f46195bb21d5c73c018aa1"
+
 react-router-dom@next:
   version "4.0.0-beta.8"
   resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-4.0.0-beta.8.tgz#907a5a0a36e9190652c80f2feead0eadbbba262e"

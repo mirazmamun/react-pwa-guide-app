@@ -1,6 +1,6 @@
 'use strict';
 
-const {resolve, join} = require('path');
+const path = require('path');
 const {LoaderOptionsPlugin, DefinePlugin, optimize} = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -10,12 +10,12 @@ const PreloadWebpackPlugin = require('preload-webpack-plugin');
 const dotenvSafe = require('dotenv-safe').load();
 const pkg = require('./package.json');
 
-module.exports = ({production = false, ssr = false} = {}) => {
+module.exports = ({production = false, ssr = false, lite = false} = {}) => {
   process.env.NODE_ENV = production ? 'production' : 'development';
 
   // output filenames for main and chunks
   const output = {
-    path: resolve(__dirname, './build'),
+    path: path.resolve(__dirname, './build'),
     filename: production ? '[name].[chunkhash].js' : '[name].js',
     chunkFilename: production ? '[name].[chunkhash].js' : '[name].js'
   };
@@ -30,24 +30,33 @@ module.exports = ({production = false, ssr = false} = {}) => {
     databaseURL: process.env.FIREBASE_DATABASE_URL
   });
 
+  // redirect the request of importing react to react-lite
+  const resolve = {
+    alias: lite ? {
+      'react': 'react-lite',
+      'react-dom': 'react-lite'
+    } : {}
+  };
+
   // webpack default configs
   const webpackConfig = {
     entry: {
       main: ['./src/main.js'],
-      vendor: ['react', 'react-dom'],
+      vendor: (lite ? [] : ['./src/stdlib.js']).concat(['react', 'react-dom'])
     },
     output,
     module: {
       loaders: [{
         test: /\.(js|jsx)$/,
-        include: resolve(__dirname, './src'),
+        include: path.resolve(__dirname, './src'),
         loaders: 'babel-loader'
       }]
     },
     devtool: sourceMap,
+    resolve,
     plugins: [
       new optimize.CommonsChunkPlugin({
-        name: 'vendor',
+        name: 'vendor'
       }),
       new optimize.CommonsChunkPlugin({
         children: true,
@@ -96,7 +105,7 @@ module.exports = ({production = false, ssr = false} = {}) => {
       new SWPrecacheWebpackPlugin({
         cacheId: `${pkg.name}-${pkg.version}`,
         staticFileGlobs: [
-          join(output.path, '**/*')
+          path.join(output.path, '**/*')
         ],
         runtimeCaching: [{
           urlPattern: /https:\/\/.+.firebaseio.com/,
