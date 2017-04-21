@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import {Avatar, Dialog, FlatButton, TextField, FloatingActionButton} from 'material-ui';
 import User from './User'
 import usersDatabase from '../services/UsersDatabase';
-import * as Icons from './Icons';
+import {ContentAddIcon} from './Icons';
 
 const fabStyle = {
 	position: 'fixed',
@@ -86,7 +86,7 @@ class Users extends React.Component {
 			<div>
 				{users()}
 				<FloatingActionButton style={fabStyle} onTouchTap={this.handleOpenDialog}>
-					<Icons.ContentAdd/>
+					<ContentAddIcon/>
 				</FloatingActionButton>
 				<Dialog
 					title="Adding New User"

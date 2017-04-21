@@ -2,7 +2,7 @@ import React from 'react';
 import {Avatar} from 'material-ui';
 import {Card, CardHeader, CardText} from 'material-ui/Card';
 import usersDatabase from '../services/UsersDatabase';
-import * as Icons from './Icons';
+import {AvatarIcon} from './Icons';
 
 const style = {
 	marginBottom: '0.3em'
@@ -41,7 +41,7 @@ class User extends React.Component {
 				<CardHeader
 					title={this.state.user ? this.state.user.name : ''}
 					subtitle={this.state.user ? this.state.user.email : ''}
-					avatar={<Avatar icon={<Icons.Avatar/>}/>}
+					avatar={<Avatar icon={<AvatarIcon/>}/>}
 				/>
 			</Card>
 		);
