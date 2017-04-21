@@ -34,7 +34,7 @@
     "inline-chunk-manifest-html-webpack-plugin": "^1.0.0",
     "preload-webpack-plugin": "^1.2.2",
     "sw-precache-webpack-plugin-loader": "^1.0.2",
-    "webpack": "^2.2.1",
+    "webpack": "^2.4.1",
     "webpack-bundle-analyzer": "^2.4.0",
     "webpack-dev-server": "^2.4.1"
   }

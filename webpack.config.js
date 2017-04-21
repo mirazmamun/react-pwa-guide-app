@@ -30,11 +30,11 @@ module.exports = ({production = false, ssr = false} = {}) => {
     databaseURL: process.env.FIREBASE_DATABASE_URL
   });
 
-  // webpack configs
+  // webpack default configs
   const webpackConfig = {
     entry: {
       main: ['./src/main.js'],
-      vendor: ['react', 'react-dom', 'react-router-dom'],
+      vendor: ['react', 'react-dom'],
     },
     output,
     module: {
@@ -48,7 +48,11 @@ module.exports = ({production = false, ssr = false} = {}) => {
     plugins: [
       new optimize.CommonsChunkPlugin({
         name: 'vendor',
-        output: output.filename
+      }),
+      new optimize.CommonsChunkPlugin({
+        children: true,
+        async: 'common',
+        minChunks: 2
       }),
       new DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
@@ -77,7 +81,7 @@ module.exports = ({production = false, ssr = false} = {}) => {
         dropAsset: true
       }),
       new PreloadWebpackPlugin({
-        include: ['vendor', 'main', 'greeting']
+        include: ['vendor', 'main', 'common', 'greeting']
       }),
       new CopyWebpackPlugin([{
         context: './public',
@@ -111,12 +115,9 @@ module.exports = ({production = false, ssr = false} = {}) => {
     }
   };
 
+  // webpack additional build for production ready version
   if (production) {
     webpackConfig.plugins = webpackConfig.plugins.concat([
-      new LoaderOptionsPlugin({
-        minimize: true,
-        debug: false
-      }),
       // https://webpack.js.org/plugins/uglifyjs-webpack-plugin/
       new optimize.UglifyJsPlugin({
         sourceMap,
@@ -136,6 +137,10 @@ module.exports = ({production = false, ssr = false} = {}) => {
           booleans: true,
         },
         extractComments: true
+      }),
+      new LoaderOptionsPlugin({
+        minimize: true,
+        debug: false
       })
     ]);
   }

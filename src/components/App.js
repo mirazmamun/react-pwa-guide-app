@@ -2,14 +2,20 @@ import React from 'react';
 import {HashRouter as Router, Route, Link} from 'react-router-dom';
 import asyncComponent from './AsyncComponent';
 import AppShell from './AppShell';
-import Greeting from './Greeting';
+
+const Greeting = asyncComponent(() => {
+  return import(/* webpackChunkName: "greeting" */ './Greeting')
+    .then(module => module.default);
+});
 
 const Users = asyncComponent(() => {
-  return import('./Users').then(module => module.default);
+  return import(/* webpackChunkName: "users" */ './Users')
+    .then(module => module.default);
 });
 
 const Notification = asyncComponent(() => {
-  return import('./Notification').then(module => module.default);
+  return import(/* webpackChunkName: "notification" */ './Notification')
+    .then(module => module.default);
 });
 
 class App extends React.Component {
