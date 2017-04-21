@@ -78,9 +78,9 @@ This guide-kit use Push Messaging built on top of Firebase Cloud Messaging. `Not
 
 # Lighthouse Audit Result
 
-Audit result is [here](https://goo.gl/2ur4rl), you can review the result with Lighthouse [viewer](https://googlechrome.github.io/lighthouse/viewer/)
+Audit result is [here](https://gist.github.com/ragingwind/6bff6223e98e0a5a54cf46077c4f9336), you can review the result with Lighthouse [viewer](https://googlechrome.github.io/lighthouse/viewer/)
 
-![](https://cloud.githubusercontent.com/assets/124117/23695353/0fa9face-0422-11e7-89a1-da7d33e17855.png)
+![](https://cloud.githubusercontent.com/assets/124117/25270127/6c90d66c-26ba-11e7-962e-f7356c82b3f0.png)
 
 # License
 
