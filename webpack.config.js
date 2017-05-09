@@ -90,7 +90,11 @@ module.exports = ({production = false, ssr = false, lite = false} = {}) => {
         dropAsset: true
       }),
       new PreloadWebpackPlugin({
-        include: ['vendor', 'main', 'common', 'greeting']
+        include: ['common', 'greeting']
+      }),
+      new PreloadWebpackPlugin({
+        rel: 'prefetch',
+        include: ['users', 'notification']
       }),
       new CopyWebpackPlugin([{
         context: './public',
