@@ -20,6 +20,7 @@ React PWA Guide Kit 는 React 와 Webpack 을 사용하여 PWA(프로그레시�
 
 PRPL 패턴을 사용해서 초기 중요 페이지의 다운로드, 실행 속도를 최적화하고 이후 필요한 파일을 프리캐쉬하는 방법과 단일 파일의 메가 번들 파일 사이즈 줄이는 방법을 알아본다
 
+- PRPL 패턴 다이어그람
 - 메인 디펜던시인 vendor 파일을 분리해서 패럴다운로드를 구현하는 방법
 - Route-based Code-splitting 와 Lazy importing 하는 방법
 - Livecode-importing(Tree shaking, dead-code elimination) 을 위한 Webpack 설정 방법
