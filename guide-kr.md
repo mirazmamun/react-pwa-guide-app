@@ -39,4 +39,5 @@ PRPL 패턴을 사용해서 초기 중요 페이지의 다운로드, 실행 속�
 
 MIT @ CodeBusiking
 
+[1]: https://www.youtube.com/watch?v=rAx2x6CSnws
 [2]: https://github.com/codebusking/react-pwa-guide-kit
