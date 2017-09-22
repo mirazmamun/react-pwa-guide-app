@@ -1,5 +1,5 @@
 {
-  "presets": [["es2015", {"modules": false}], "react-app"],
+  "presets": [["env", {"modules": false}], "react-app"],
   "plugins": [
     "syntax-dynamic-import",
     [

@@ -10,7 +10,7 @@
 
 - **Material Design and AppShell**: Responsive, fit any form factor, desktop but the first is mobile. AppShell architecture implemented wearing material design got bressed by [material-ui.com](https://material-ui.com)
 - **ES6 via Babel**: You can use ES6 feature with same babel-preset to [create-react-app](https://github.com/facebookincubator/create-react-app) and dynamic module importing
-- **Webpack 2**
+- **Webpack**
   - **Remarkable configurations**: Webpack configuration file has been written in configurable, optimzied and easy settings
   - **Developing Progressive Web App**: You can check them of optimized bundling for PWA including code-splitting, multiple chunk and [preload](https://www.npmjs.com/package/preload-webpack-plugin). As developing, reloading changes instantly by webpack-dev-server, also it is working well with [service worker](https://github.com/ragingwind/sw-precache-webpack-dev-plugin)
 - **HTTPS**: Deploying to Firebase Hosting to run perfectly on HTTPS with PWA features
@@ -50,17 +50,17 @@ We support three versions of build, production, development(debug) and ssr. All 
 
 ```sh
 # build in production
-yarn build
+npm run build
 
 # build in debug
-yarn build:debug
+npm run build:debug
 ```
 
 ## Run PWA on Server
 
 ```sh
-# starting app by webpack-dev-server, no-ssr
-yarn start
+# starting app by webpack-dev-server
+npm start
 ```
 
 ## Deployment when you ready for production
@@ -69,7 +69,7 @@ You need to check that configuration again. You must have a project on firebase,
 
 ```sh
 # make sure that run `yarn build` before you try to deploy the app to firebase
-yarn deploy
+npm run deploy
 ```
 
 ## Testing Firebase Cloud Messaging for Push
@@ -84,4 +84,4 @@ Audit result is [here](https://gist.github.com/ragingwind/6bff6223e98e0a5a54cf46
 
 # License
 
-MIT @ CodeBusiking
+MIT @CODEBUSKING
