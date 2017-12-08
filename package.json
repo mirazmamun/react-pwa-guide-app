@@ -5,7 +5,8 @@
   "author": "ragingwind",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server",
+    "start": "webpack-dev-server --https",
+    "prestart": "opn https://0.0.0.0:8080 -- 'google chrome' --incognito --ignore-certificate-errors --unsafely-treat-insecure-origin-as-secure=https://0.0.0.0:8080",
     "build": "rm -rf build && webpack --env.production",
     "build:debug": "rm -rf build && webpack",
     "deploy": "npm run build && firebase deploy",
@@ -13,8 +14,9 @@
   },
   "dependencies": {
     "ejs": "^2.5.7",
-    "firebase": "^4.4.0",
+    "firebase": "^4.8.0",
     "material-ui": "^0.19.2",
+    "opn": "^5.1.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-lite": "^0.15.38",
@@ -33,9 +35,11 @@
     "html-webpack-plugin": "^2.30.1",
     "inline-chunk-manifest-html-webpack-plugin": "^1.1.1",
     "preload-webpack-plugin": "^2.0.0",
+    "sw-precache": "^5.2.0",
     "sw-precache-webpack-plugin-loader": "^1.0.2",
     "webpack": "^3.6.0",
     "webpack-bundle-analyzer": "^2.9.0",
-    "webpack-dev-server": "^2.8.2"
+    "webpack-dev-server": "^2.8.2",
+    "opn-cli": "^3.1.0"
   }
 }
