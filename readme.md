@@ -74,10 +74,15 @@ npm run deploy
 
 ## Testing Firebase Cloud Messaging for Push
 
-This guide-kit use Push Messaging built on top of Firebase Cloud Messaging. `Notificaiotn` page will show you peer token to send push message to current opened tab. To do this, [`fcm-cli`](https://github.com/ragingwind/fcm-cli) is a really simple and powerful tool for testing FCM on terminal. [This video will cover how to deal with fcm-cli and FCM](https://goo.gl/Jx4poC) (*Korean*)
+This guide-kit use Push Messaging built on top of Firebase Cloud Messaging. `Notification` page will show you peer token to send push message to current opened tab. To do this, [`fcm-cli`](https://github.com/ragingwind/fcm-cli) is a really simple and powerful tool for testing FCM on terminal. [This video will cover how to deal with fcm-cli and FCM](https://goo.gl/Jx4poC) (*Korean*)
+
+### Local Testing
+Registering a Service Worker without a trusted SSL Connection will fail with:  [Failed to register a ServiceWorker: An SSL certificate error occurred when fetching the script](http://goo.gl/lq4gCo). 
+
+`webpack-dev-server --https` will use a self signed certificate, which is not trusted.
+Using Google Chrome, use the following flag to ignore `--unsafely-treat-insecure-origin-as-secure=https://0.0.0.0:8080`
 
 # Lighthouse Audit Result
-
 Audit result is [here](https://gist.github.com/ragingwind/6bff6223e98e0a5a54cf46077c4f9336), you can review the result with Lighthouse [viewer](https://googlechrome.github.io/lighthouse/viewer/)
 
 ![](https://cloud.githubusercontent.com/assets/124117/25270127/6c90d66c-26ba-11e7-962e-f7356c82b3f0.png)
