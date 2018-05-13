@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {MuiThemeProvider, getMuiTheme} from 'material-ui/styles';
+import darkBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import {AppBar, Drawer, MenuItem} from 'material-ui';
 import {GreetingIcon, UsersIcon, NotificationIcon} from './Icons';
 
@@ -27,15 +28,9 @@ class SidebarDrawer extends React.Component {
         onRequestChange={this.props.onRequestChange}
       >
         <MenuItem
-          primaryText={'Greeting'}
+          primaryText={'Home'}
           leftIcon={<GreetingIcon/>}
           containerElement={<Link to={'/'}/>}
-          onClick={this.props.onClick}
-        />
-        <MenuItem
-          primaryText={'Users'}
-          leftIcon={<UsersIcon/>}
-          containerElement={<Link to={'/users'}/>}
           onClick={this.props.onClick}
         />
         <MenuItem
@@ -79,7 +74,7 @@ class AppShell extends Component {
     />)
 
     return (
-      <MuiThemeProvider>
+      <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
         <div>
           <AppBar
             title={this.props.title}

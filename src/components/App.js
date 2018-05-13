@@ -25,7 +25,6 @@ class App extends React.Component {
         <AppShell>
           <div>
             <Route exact path="/" component={Greeting}/>
-            <Route path="/users/:id?" component={Users}/>
             <Route path="/notification" component={Notification}/>
           </div>
         </AppShell>

@@ -1,23 +1,16 @@
 import React from 'react';
-import {Card, CardTitle, CardText} from 'material-ui/Card';
+import TextField from 'material-ui/TextField';
 
 class Greeting extends React.Component {
-  render () {
+  render() {
     return (
       <div>
-        <Card>
-          <CardTitle title="Hello! World"/>
-          <CardText>
-            You will have a work:
-            <ul>
-              <li>Web Manifest for installing</li>
-              <li>Service Worker for caching and offline</li>
-              <li>Application Shell powered by <a href="https://material-ui.com">material-ui</a></li>
-              <li>PRPL pattern by code splitting</li>
-              <li>Opt in ES2015</li>
-            </ul>
-          </CardText>
-        </Card>
+        <p>Goodol' ToDo App with completion and notification</p>
+        <form style={{ display: "block", margin: "2em auto", width: "50%" }}>
+          <TextField style={{display: 'inline-block'}} hintText="Buy milk"
+            floatingLabelText="I need to"
+            floatingLabelFixed={true} />
+        </form>
       </div>
     )
   }

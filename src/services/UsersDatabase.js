@@ -17,7 +17,7 @@ class UsersDatabase {
 	}
 
 	post = (user = {}) => {
-		return fetch(this.databaseURL, {
+		return fetch(`${this.databaseURL}/users.json`, {
 			method: 'POST',
 			body: JSON.stringify(user)
 		}).then(res => {
